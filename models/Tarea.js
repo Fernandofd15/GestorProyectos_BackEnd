@@ -3,11 +3,19 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const tareasSchema = new Schema({
+    idProyecto:{
+        type: Schema.ObjectId,
+            ref:'Proyecto',
+    },
 strNombre:{
     type: String,
     trim:true,
     },
 strStatus:{
+    type: String,
+    trim:true,
+},
+strDescripcion:{
     type: String,
     trim:true,
 },
