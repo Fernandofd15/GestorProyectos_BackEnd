@@ -7,6 +7,21 @@ const proyectosSchema = new Schema({
         type: Schema.ObjectId,
         ref:'Usuario',
     },
+
+    strNombreProyecto:{
+        type: String,
+        trim:true,
+    },
+    
+    strStatus:{
+        type:String,
+        trim:true,
+    },
+
+    strDescripcion:{
+        type:String,
+        trim:true,
+    },
    
     dteFechaInicio:{
         type: Date,

@@ -19,7 +19,19 @@ dteFechaEntrega:{
     type: Date,
     default:Date.now,
 },
-arrUsuariosAsignados: [{
+arrAdministrador: [{
+    idUsuario:{
+        type: Schema.ObjectId,
+        ref:'Usuario',
+    },
+}],
+arrDesarrollador: [{
+    idUsuario:{
+        type: Schema.ObjectId,
+        ref:'Usuario',
+    },
+}],
+arrTester: [{
     idUsuario:{
         type: Schema.ObjectId,
         ref:'Usuario',
