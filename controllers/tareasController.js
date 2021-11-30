@@ -1,4 +1,5 @@
 const Tarea = require('../models/Tarea');
+const Usuario = require('../models/Usuario');
 
 //Agregar cliente
 exports.add = async (req, res)=> {
@@ -19,7 +20,27 @@ exports.add = async (req, res)=> {
 exports.list = async (req, res) => {
     try{
     const tarea = await Tarea.find({})
-
+    .populate({
+        path: 'arrDesarrollador', 
+        populate: {
+            path:'idUsuario',
+            model:'Usuario'
+        }
+    })
+    .populate({
+        path: 'arrTester', 
+        populate: {
+            path:'idUsuario',
+            model:'Usuario'
+        }
+    })
+    .populate({
+        path: 'arrAdministrador', 
+        populate: {
+            path:'idUsuario',
+            model:'Usuario'
+        }
+    })
     res.json(tarea);
 }catch(error){
     console.log(error);
@@ -31,10 +52,34 @@ exports.list = async (req, res) => {
 // leer cliente por id
 exports.show = async(req, res, next) =>{
     try{
-const tarea = await Tarea.findById(req.params.id);
+const tarea = await Tarea.findById(req.params.id)
+.populate({
+    path: 'arrDesarrollador', 
+    populate: {
+        path:'idUsuario',
+        model:'Usuario'
+    }
+})
+.populate({
+    path: 'arrTester', 
+    populate: {
+        path:'idUsuario',
+        model:'Usuario'
+    }
+})
+.populate({
+    path: 'arrAdministrador', 
+    populate: {
+        path:'idUsuario',
+        model:'Usuario'
+    }
+})
+;
+
 if (!tarea){
     res.status(404).json({ message: 'La tarea no existe'});
 }
+
 res.json(tarea);
     }catch(error){
 res.status(400).json({message: 'Error al procesar la peticion'});

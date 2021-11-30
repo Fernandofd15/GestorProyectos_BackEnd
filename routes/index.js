@@ -24,8 +24,7 @@ module.exports = function(){
    router.delete('/usuarios/:id', usuariosController.delete);
   
    //Tareas
-  router.post('/tareas', tareasController.add
-   );
+  router.post('/tareas', tareasController.add);
    router.get('/tareas', tareasController.list);
    router.get('/tareas/:id', tareasController.show);
    router.put('/tareas/:id',  tareasController.update);
