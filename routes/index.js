@@ -26,6 +26,8 @@ module.exports = function(){
    //Tareas
   router.post('/tareas', tareasController.add);
    router.get('/tareas', tareasController.list);
+   router.get('/tareasfinalizadas', tareasController.listTareaF);
+   router.get('/tareaspendientes', tareasController.listTareaP);
    router.get('/tareas/:id', tareasController.show);
    router.put('/tareas/:id',  tareasController.update);
    router.delete('/tareas/:id', tareasController.delete);

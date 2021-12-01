@@ -49,6 +49,72 @@ exports.list = async (req, res) => {
 }
 };
 
+//primera accion: listar tarea por status
+exports.listTareaF = async (req, res) => {
+    try{
+    const tarea = await Tarea.find({strStatus: 'Finalizada'})
+    .populate({
+        path: 'arrDesarrollador', 
+        populate: {
+            path:'idUsuario',
+            model:'Usuario'
+        }
+    })
+    .populate({
+        path: 'arrTester', 
+        populate: {
+            path:'idUsuario',
+            model:'Usuario'
+        }
+    })
+    .populate({
+        path: 'arrAdministrador', 
+        populate: {
+            path:'idUsuario',
+            model:'Usuario'
+        }
+    })
+    res.json(tarea);
+}catch(error){
+    console.log(error);
+    res.send(error);
+    next();
+}
+};
+
+//primera accion: listar tarea por status
+exports.listTareaP = async (req, res) => {
+    try{
+    const tarea = await Tarea.find({strStatus: 'Pendiente'})
+    .populate({
+        path: 'arrDesarrollador', 
+        populate: {
+            path:'idUsuario',
+            model:'Usuario'
+        }
+    })
+    .populate({
+        path: 'arrTester', 
+        populate: {
+            path:'idUsuario',
+            model:'Usuario'
+        }
+    })
+    .populate({
+        path: 'arrAdministrador', 
+        populate: {
+            path:'idUsuario',
+            model:'Usuario'
+        }
+    })
+    res.json(tarea);
+}catch(error){
+    console.log(error);
+    res.send(error);
+    next();
+}
+};
+
 // leer cliente por id
 exports.show = async(req, res, next) =>{
     try{
