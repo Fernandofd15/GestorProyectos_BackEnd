@@ -115,6 +115,105 @@ exports.listTareaP = async (req, res) => {
 }
 };
 
+//primera accion: listar tarea por status
+exports.listTareaXidUsuarioDev = async (req, res) => {
+    try{
+    const tarea = await Tarea.find({'arrDesarrollador.idUsuario':req.params.id})
+    .populate({
+        path: 'arrDesarrollador', 
+        populate: {
+            path:'idUsuario',
+            model:'Usuario'
+        }
+    })
+    .populate({
+        path: 'arrTester', 
+        populate: {
+            path:'idUsuario',
+            model:'Usuario'
+        }
+    })
+    .populate({
+        path: 'arrAdministrador', 
+        populate: {
+            path:'idUsuario',
+            model:'Usuario'
+        }
+    })
+    res.json(tarea);
+}catch(error){
+    console.log(error);
+    res.send(error);
+    next();
+}
+};
+
+//
+exports.listTareaXidUsuarioTester = async (req, res) => {
+    try{
+    const tarea = await Tarea.find({'arrTester.idUsuario':req.params.id})
+    .populate({
+        path: 'arrDesarrollador', 
+        populate: {
+            path:'idUsuario',
+            model:'Usuario'
+        }
+    })
+    .populate({
+        path: 'arrTester', 
+        populate: {
+            path:'idUsuario',
+            model:'Usuario'
+        }
+    })
+    .populate({
+        path: 'arrAdministrador', 
+        populate: {
+            path:'idUsuario',
+            model:'Usuario'
+        }
+    })
+    res.json(tarea);
+}catch(error){
+    console.log(error);
+    res.send(error);
+    next();
+}
+};
+
+//
+exports.listTareaXidUsuarioAdm = async (req, res) => {
+    try{
+    const tarea = await Tarea.find({'arrAdministrador.idUsuario':req.params.id})
+    .populate({
+        path: 'arrDesarrollador', 
+        populate: {
+            path:'idUsuario',
+            model:'Usuario'
+        }
+    })
+    .populate({
+        path: 'arrTester', 
+        populate: {
+            path:'idUsuario',
+            model:'Usuario'
+        }
+    })
+    .populate({
+        path: 'arrAdministrador', 
+        populate: {
+            path:'idUsuario',
+            model:'Usuario'
+        }
+    })
+    res.json(tarea);
+}catch(error){
+    console.log(error);
+    res.send(error);
+    next();
+}
+};
+
 // leer cliente por id
 exports.show = async(req, res, next) =>{
     try{
