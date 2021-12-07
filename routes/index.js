@@ -28,7 +28,10 @@ module.exports = function(){
    router.get('/tareas', tareasController.list);
    router.get('/tareasfinalizadas', tareasController.listTareaF);
    router.get('/tareaspendientes', tareasController.listTareaP);
-   router.get('/tareasxusuarioDev/:id', tareasController.listTareaXidUsuarioDev);
+   router.get('/tareasxusuarioDev/:id/:idProyecto', tareasController.listTareaXidUsuarioDev2);
+   router.get('/tareasxusuarioTester/:id/:idProyecto', tareasController.listTareaXidUsuarioTester2);
+   router.get('/tareasxusuarioAdmin/:id/:idProyecto', tareasController.listTareaXidUsuarioAdm2);
+   router.get('/tareasxusuarioDev/:id/', tareasController.listTareaXidUsuarioDev);
    router.get('/tareasxusuarioTester/:id', tareasController.listTareaXidUsuarioTester);
    router.get('/tareasxusuarioAdmin/:id', tareasController.listTareaXidUsuarioAdm);
    router.get('/tareas/:id', tareasController.show);

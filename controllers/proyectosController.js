@@ -1,4 +1,4 @@
-const Tarea = require('../models/Proyecto');
+const Proyecto = require('../models/Proyecto');
 
 //Agregar cliente
 exports.add = async (req, res)=> {
