@@ -1,5 +1,5 @@
 const Tarea = require('../models/Tarea');
-const Usuario = require('../models/Usuario');
+
 
 //Agregar cliente
 exports.add = async (req, res)=> {
@@ -41,6 +41,11 @@ exports.list = async (req, res) => {
             model:'Usuario'
         }
     })
+    .populate({
+        
+        path:'idProyecto',
+        model:'Proyecto',
+})
     res.json(tarea);
 }catch(error){
     console.log(error);
@@ -73,6 +78,11 @@ exports.listTareaF = async (req, res) => {
             path:'idUsuario',
             model:'Usuario'
         }
+    })
+    .populate({
+        
+        path:'idProyecto',
+        model:'Proyecto',
     })
     res.json(tarea);
 }catch(error){
@@ -107,6 +117,11 @@ exports.listTareaP = async (req, res) => {
             model:'Usuario'
         }
     })
+    .populate({
+        
+        path:'idProyecto',
+        model:'Proyecto',
+    })
     res.json(tarea);
 }catch(error){
     console.log(error);
@@ -137,6 +152,11 @@ exports.listTareaXidUsuarioDev2 = async (req, res) => {
             path:'idUsuario',
             model:'Usuario'
         }
+    })
+    .populate({
+        
+        path:'idProyecto',
+        model:'Proyecto',
     })
     res.json(tarea);
 }catch(error){
@@ -170,6 +190,11 @@ exports.listTareaXidUsuarioTester2 = async (req, res) => {
             model:'Usuario'
         }
     })
+    .populate({
+        
+        path:'idProyecto',
+        model:'Proyecto',
+    })
     res.json(tarea);
 }catch(error){
     console.log(error);
@@ -201,6 +226,11 @@ exports.listTareaXidUsuarioAdm2 = async (req, res) => {
             path:'idUsuario',
             model:'Usuario'
         }
+    })
+    .populate({
+        
+        path:'idProyecto',
+        model:'Proyecto',
     })
     res.json(tarea);
 }catch(error){
@@ -235,6 +265,11 @@ exports.listTareaXidUsuarioDev = async (req, res) => {
             model:'Usuario'
         }
     })
+    .populate({
+        
+            path:'idProyecto',
+            model:'Proyecto',
+    })
     res.json(tarea);
 }catch(error){
     console.log(error);
@@ -268,6 +303,11 @@ exports.listTareaXidUsuarioTester = async (req, res) => {
             model:'Usuario'
         }
     })
+    .populate({
+        
+        path:'idProyecto',
+        model:'Proyecto',
+})
     res.json(tarea);
 }catch(error){
     console.log(error);
@@ -301,6 +341,11 @@ exports.listTareaXidUsuarioAdm = async (req, res) => {
             model:'Usuario'
         }
     })
+    .populate({
+        
+        path:'idProyecto',
+        model:'Proyecto',
+})
     res.json(tarea);
 }catch(error){
     console.log(error);
@@ -326,6 +371,11 @@ const tarea = await Tarea.findById(req.params.id)
         path:'idUsuario',
         model:'Usuario'
     }
+})
+.populate({
+        
+    path:'idProyecto',
+    model:'Proyecto',
 })
 .populate({
     path: 'arrAdministrador', 
